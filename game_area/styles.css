@@ -1,0 +1,85 @@
+/* Your CSS styles here */
+/* CSS styles here */
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wheel-container {
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.wheel-segment {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 150px 150px 0;
+  border-color: #ff4fa1 transparent transparent;
+  transform-origin: 50% 150px;
+}
+
+.center-circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #fffb00;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spin-button {
+  padding: 10px 20px;
+  background-color: #001aff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.spin-button:hover {
+  background-color: #0047ff;
+}
+.claim-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  .claim-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+/* Hover Effect */
+.claim-button:hover {
+  background-color: #45a049; /* Darker Green */
+}
