@@ -1,0 +1,37 @@
+if (isset($_POST['update_cart'])) {
+    // Check if the quantities array is set and not empty
+    if(isset($_POST['qty']) && !empty($_POST['qty'])) {
+        $quantities = $_POST['qty'];
+        $update_successful = true; // Flag to track if all updates were successful
+
+        foreach ($quantities as $product_id => $quantity) {
+            // Check if quantity is provided and not empty
+            if (!isset($quantity) || $quantity === "") {
+                // Quantity not provided for this product
+                $update_successful = false;
+                echo "<script>alert('Please add a quantity for product with ID: $product_id');</script>";
+            } else {
+                // Quantity provided, proceed with update
+                $update_cart = "UPDATE `cart_details` SET quantity='$quantity' WHERE ip_address='$get_ip_address' AND product_id='$product_id'";
+                $result_products_quantity = mysqli_query($con, $update_cart);
+
+                if (!$result_products_quantity) {
+                    // Error updating cart for this product
+                    $update_successful = false;
+                    echo "<script>alert('Error updating cart for product with ID: $product_id - " . mysqli_error($con) . "');</script>";
+                }
+            }
+        }
+
+        if ($update_successful) {
+            echo "<script>alert('Cart updated successfully!');</script>";
+        } else {
+            // If any errors occurred during updates
+            echo "<script>alert('Some products could not be updated. Please try again.');</script>";
+        }
+    } else {
+        // If quantities array is not set or empty
+        echo "<script>alert('Please add quantities for products before updating.');</script>";
+    }
+}
+?>
